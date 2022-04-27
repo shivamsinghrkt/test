@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <div id="navbar">
+        <div><a href="backend.html">backend</a></div>
+        <div><a href="frontend.html">frontend</a></div>
+    </div>
+   <form id="form">
+       <input id="Imgurl" type="text" placeholder="enter url">
+       <input id="NAME" type="text" placeholder="Enter Name">
+       <input id="role" type="text" placeholder="Enter invester role">
+       <input  id="logo" type="text" placeholder="Enter logo url">
+
+       <input type="submit" />
+   </form>
+</body>
+</html>
+
+<script>
+   var form= document.querySelector("#form")
+    var arr=JSON.parse(localStorage.getItem("investordata"))||[]
+    // function display(data){
+    //  var parent=document.createElement("div");
+
+    //  var image=document.createElement("img");
+    //      image.innerText=data.Img
+
+    //  var Name=document.createElement("h1");
+    //      Name.innerText=data.name
+         
+    //  var Role=document.createElement("p");
+    //      Role.innerText=data.ROLE    
+
+    //  var Logo=document.createElement("img");
+    //     Logo.innerText=data.LOGO
+
+    // parent.append(image,Name, Role, Logo);
+    // // report.append(parent);
+    // }
+form.addEventListener("submit", function(event){
+    event.preventDefault();
+    var data={
+    Img:form.Imgurl.value,
+    name:form.NAME.value,
+    ROLE:form.role.value,
+    LOGO:form.logo.value,
+}
+arr.push(data);
+console.log(arr);
+localStorage.setItem("investordata",JSON.stringify(arr))
+})
+
+
+
+</script>
+

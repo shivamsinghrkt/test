@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #reports{
+            height:500px;
+            width: 95% ;
+            display: grid;
+            grid-template-columns: repeat(4.1fr);
+            grid-template-rows: repeat(4,400px);
+            gap:20px;
+            border: 1px solid red;
+            display: flex;
+            margin: auto;
+        }
+        #reports>div{
+            border: 1px solid red;
+
+        }
+        #reports>div>h2,p{
+            text-align: center;
+            
+        }
+
+        p+img{
+            height: 50px;
+            display: block;
+            margin: auto;
+            margin-top: -20px;
+        }
+    </style>
+</head>
+<body>
+   <h1>FRONTEND</h1>
+   <div id="reports">
+
+   </div>
+</body>
+</html>
+<script>
+    var arr=JSON.parse(localStorage.getItem("investordata"))
+   var report= document.querySelector("#reports")
+    arr.forEach(function(el){
+        var parent=document.createElement("div");
+
+     var image=document.createElement("img");
+         image.setAttribute("src", el.Img)
+
+     var Name=document.createElement("h2");
+         Name.innerText=el.name
+         
+     var Role=document.createElement("p");
+         Role.innerText=el.ROLE    
+
+     var Logo=document.createElement("img");
+        Logo.setAttribute("src", el.LOGO);
+
+    parent.append(image,Name, Role, Logo);
+    report.append(parent);
+    })
+</script>
